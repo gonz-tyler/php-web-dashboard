@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modify Car Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" type="module"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/webservicecar.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/modal.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Content/styles.css">
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+    <script src="Scripts/script.js"></script>
+    <link rel="icon" href="carInsuranceIcon.png">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Car Data</a>
+            </div>
+        </div>
+    </div>
+    <div>
+    <!-- Create Car Modal -->
+    <div id="createCarModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Car</h2>
+            <form id="createCarForm">
+                <label for="carId">Car ID:</label>
+                <input type="number" name="carId" id="carId" required><br>
+                <label for="carType">Car Type:</label>
+                <input type="text" name="carType" id="carType" required><br>
+                <label for="redCar">Red Car:</label>
+                <input type="checkbox" name="redCar" id="redCar"><br>
+                <label for="carAge">Car Age:</label>
+                <input type="number" name="carAge" id="carAge" required><br>
+                <label for="driverId">Driver ID:</label>
+                <input type="number" name="driverId" id="driverId" required><br>
+                <button type="submit" class="btn btn-sm btn-primary create">Create</button>
+            </form>
+        </div>
+    </div>
+    <!-- Update Car Modal -->
+    <div id="updateCarModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update Car</h2>
+            <form id="updateCarForm">
+                <label for="carId">Car ID:</label>
+                <input type="number" name="carId" id="carId" disabled><br>
+                <label for="carType">Car Type:</label>
+                <input type="text" name="carType" id="carType" required><br>
+                <label for="redCar">Red Car:</label>
+                <input type="checkbox" name="redCar" id="redCar"><br>
+                <label for="carAge">Car Age:</label>
+                <input type="number" name="carAge" id="carAge" required><br>
+                <label for="driverId">Driver ID:</label>
+                <input type="number" name="driverId" id="driverId" required><br>
+                <button type="submit" class="btn btn-sm btn-primary update" onClick="editCarValues(document.getElementById('carId').value);">Update</button>
+            </form>
+        </div>
+    </div>
+    <div class="body-content">
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" value="Get All Cars" class="btn btn-sm btn-primary" onclick="getAllCars();" />
+                &nbsp;
+                <input type="button" value="Add New Car" class="btn btn-sm btn-primary" onclick="createNewCarForm();" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div id="newdriverform" class="row">
+        </div>
+	<div id="allData" class="row">
+        </div>
+
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+</body>
+</html>

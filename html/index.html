@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Insurance Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" type="module"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/modal.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Content/styles.css">
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+    <script src="Scripts/script.js"></script>
+    <script src="Scripts/visualisations.js"></script>
+    <link rel="icon" href="carInsuranceIcon.png">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Car Insurance Dashboard</a>
+            </div>
+        </div>
+    </div>
+    <div>
+    <div class="body-content">
+	<div id="demographicWidget" class="widget-holder">
+	    <canvas id="genderChart" class="widget"></canvas>
+	    <canvas id="maritalChart" class="widget"></canvas>
+	    <canvas id="occupationChart" class="widget"></canvas>
+	    <canvas id="educationChart" class="widget"></canvas>
+	    <canvas id="ageChart" class="widget"></canvas>
+        <div id="driverPageButton" class="navigation">
+            <a href="drivers.html" class="button widget">Go to Driver Page</a>
+        </div>
+        </div>
+	<div id="claimWidget" class="widget-holder">
+	    <div id="totalClaimsChart" class="widget"></div>
+	    <div class="widget" id="totalMoneyChart"></div>
+	    <canvas id="topDriversChart" class="widget"></canvas>
+        <div id="claimPageButton" class="navigation">
+            <a href="claims.html" class="button widget">Go to Claim Page</a>
+        </div>
+	</div>
+	<div id="carWidget" class="widget-holder">
+        <canvas id="carTypeChart" class="widget"></canvas>
+        <canvas id="carAgeChart" class="widget"></canvas>
+        <canvas id="redCarChart" class="widget"></canvas>
+        <div id="carPageButton" class="navigation">
+            <a href="cars.html" class="button widget">Go to Car Page</a>
+        </div>
+	</div>
+	<div id="allData" class="row">
+        </div>
+        <div id="overlay" class="overlay"></div>
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+</body>
+</html>

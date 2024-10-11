@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modify Driver Data</title>
+    <link rel="icon" href="carInsuranceIcon.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" type="module"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/webservicedriver.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/modal.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Content/styles.css">
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+    <script src="Scripts/script.js"></script>
+    <script src="Scripts/search.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Driver Data</a>
+            </div>
+        </div>
+    </div>
+    <!-- Create Driver Modal -->
+    <div id="createDriverModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Driver</h2>
+            <form id="createDriverForm">
+                <label for="driverId">Driver ID:</label>
+            <input type="number" name="driverId" id="driverId" required><br>
+            <label for="kidsDrive">Kids Driving:</label>
+            <input type="number" name="kidsDrive" id="kidsDrive" required><br>
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age" required><br>
+            <label for="income">Income:</label>
+            <input type="number" name="income" id="income" step="0.01" required><br>
+            <label for="mstatus">Marital Status:</label>
+            <input type="checkbox" name="mstatus" id="mstatus"><br>
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender" required>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select><br>
+            <label for="education">Education:</label>
+            <input type="text" name="education" id="education" required><br>
+            <label for="occupation">Occupation:</label>
+            <input type="text" name="occupation" id="occupation" required><br>
+            <button type="submit" class="btn btn-sm btn-primary create">Create</button>
+            </form>
+        </div>
+    </div>
+    <!-- Update Driver Modal -->
+    <div id="updateDriverModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update Driver</h2>
+            <form id="updateDriverForm">
+                <label for="driverId">Driver ID:</label>
+                <input type="number" name="driverId" id="driverId" disabled><br>
+                <input type="number" name="hiddenDriverId" id="hiddenDriverId" hidden>
+                <label for="kidsDrive">Kids Driving:</label>
+                <input type="number" name="kidsDrive" id="kidsDrive" required><br>
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age" required><br>
+                <label for="income">Income:</label>
+                <input type="number" name="income" id="income" step="0.01" required><br>
+                <label for="mstatus">Marital Status:</label>
+                <input type="checkbox" name="mstatus" id="mstatus"><br>
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" required>
+                   <option value="M">Male</option>
+                   <option value="F">Female</option>
+                </select><br>
+                <label for="education">Education:</label>
+                <input type="text" name="education" id="education" required><br>
+                <label for="occupation">Occupation:</label>
+                <input type="text" name="occupation" id="occupation" required><br>
+                <button type="submit" class="btn btn-sm btn-primary update" onClick="editDriverValues(document.getElementById('driverId').value);">Update</button>
+            </form>
+        </div>
+    </div>
+    <div class="body-content">
+        <div>
+            <input type="button" value="Get All Drivers" class="btn btn-sm btn-primary" onclick="getAllDrivers();" />
+            &nbsp;
+            <input type="button" value="Add New Driver" class="btn btn-sm btn-primary" onclick="createNewDriverForm();" />
+        </div>
+        <br />
+        <input type="text" id="searchInput" placeholder="Search by Driver ID">
+        <br />
+	<div id="allData" class="row">
+        </div>
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+</body>
+</html>

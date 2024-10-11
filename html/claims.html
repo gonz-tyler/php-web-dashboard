@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modify Claim Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" type="module"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/webserviceclaim.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/modal.css" rel="stylesheet" />
+    <link href="Content/styles.css" rel="stylesheet" />
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+    <script src="Scripts/script.js"></script>
+    <link rel="icon" href="carInsuranceIcon.png">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Claim Data</a>
+            </div>
+        </div>
+    </div>
+    <div>
+    <!-- Create Claim Modal -->
+    <div id="createClaimModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Claim</h2>
+            <form id="createClaimForm">
+	        <label for="claimId">Claim ID:</label>
+	        <input type="number" name="claimId" id="claimId" required><br>
+                <label for="oldClaim">Old Claim:</label>
+                <input type="number" name="oldClaim" id="oldClaim" required><br>
+                <label for="claimFrequency">Claim Frequency:</label>
+                <input type="number" name="claimFrequency" id="claimFrequency" required><br>
+                <label for="claimAmount">Claim Amount:</label>
+                <input type="number" name="claimAmount" id="claimAmount" step="0.01" required><br>
+                <label for="claimFlag">Claim Flag:</label>
+                <input type="checkbox" name="claimFlag" id="claimFlag"><br>
+                <label for="claimKidsDrive">Claim Kids Drive:</label>
+                <input type="number" name="claimKidsDrive" id="claimKidsDrive" required><br>
+                <label for="claimAge">Claim Age:</label>
+                <input type="number" name="claimAge" id="claimAge" required><br>
+                <label for="claimIncome">Claim Income:</label>
+                <input type="number" name="claimIncome" id="claimIncome" step="0.01" required><br>
+                <label for="claimStatus">Claim Marriage Status:</label>
+                <input type="checkbox" name="claimStatus" id="claimStatus"><br>
+                <label for="claimEducation">Claim Education:</label>
+                <input type="text" name="claimEducation" id="claimEducation" required><br>
+                <label for="claimOccupation">Claim Occupation:</label>
+                <input type="text" name="claimOccupation" id="claimOccupation" required><br>
+                <label for="driverId">Driver ID:</label>
+                <input type="number" name="driverId" id="driverId" required><br>
+                <label for="carId">Car ID:</label>
+                <input type="number" name="carId" id="carId" required><br>
+                <button type="submit" class="btn btn-sm btn-primary create">Create</button>
+            </form>
+        </div>
+    </div>
+    <!-- Update Claim Modal -->
+    <div id="updateClaimModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update Claim</h2>
+            <form id="updateClaimForm">
+                <label for="claimId">Claim ID:</label>
+                <input type="number" name="claimId" id="claimId" disabled><br>
+                <label for="oldClaim">Old Claim:</label>
+                <input type="number" name="oldClaim" id="oldClaim" required><br>
+                <label for="claimFrequency">Claim Frequency:</label>
+                <input type="number" name="claimFrequency" id="claimFrequency" required><br>
+                <label for="claimAmount">Claim Amount:</label>
+                <input type="number" name="claimAmount" id="claimAmount" step="0.01" required><br>
+                <label for="claimFlag">Claim Flag:</label>
+                <input type="checkbox" name="claimFlag" id="claimFlag"><br>
+                <label for="claimKidsDrive">Claim Kids Drive:</label>
+                <input type="number" name="claimKidsDrive" id="claimKidsDrive" required><br>
+                <label for="claimAge">Claim Age:</label>
+                <input type="number" name="claimAge" id="claimAge" required><br>
+                <label for="claimIncome">Claim Income:</label>
+                <input type="number" name="claimIncome" id="claimIncome" step="0.01" required><br>
+                <label for="claimStatus">Claim Marriage Status:</label>
+                <input type="checkbox" name="claimStatus" id="claimStatus"><br>
+                <label for="claimEducation">Claim Education:</label>
+                <input type="text" name="claimEducation" id="claimEducation" required><br>
+                <label for="claimOccupation">Claim Occupation:</label>
+                <input type="text" name="claimOccupation" id="claimOccupation" required><br>
+                <label for="driverId">Driver ID:</label>
+                <input type="number" name="driverId" id="driverId" required><br>
+                <label for="carId">Car ID:</label>
+                <input type="number" name="carId" id="carId" required><br>
+                <button type="submit" class="btn btn-sm btn-primary update" onClick="editClaimValues(document.getElementById('claimId').value);">Update</button>
+            </form>
+        </div>
+    </div>
+    <div class="body-content">
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" value="Get All Claims" class="btn btn-sm btn-primary" onclick="getAllClaims();" />
+                &nbsp;
+                <input type="button" value="Add New Claim" class="btn btn-sm btn-primary" onclick="createNewClaimForm();" />
+                &nbsp;
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div id="newdriverform" class="row">
+        </div>
+	<div id="allData" class="row">
+        </div>
+
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+</body>
+</html>
